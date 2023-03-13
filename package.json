@@ -1,0 +1,73 @@
+{
+  "name": "@culturedjam/schwittered",
+  "version": "0.0.1",
+  "description": "Schwittered React components.",
+  "homepage": "https://github.com/culturedjam/schwittered#readme",
+  "bugs": {
+    "url": "https://github.com/culturedjam/schwittered/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/culturedjam/schwittered.git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "prettier": {},
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run typecheck",
+      "npm run lint:eslint --fix",
+      "npm run format"
+    ],
+    "*.scss": [
+      "npm run lint:stylelint --fix",
+      "format"
+    ]
+  },
+  "scripts": {
+    "build": "run-s clean build:sass build:tsup",
+    "build:sass": "sass src:dist",
+    "build:tsup": "tsup src/**/*.{ts,tsx} -d dist --dts",
+    "clean": "rimraf dist",
+    "format": "prettier --write .",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "lint:stylelint": "stylelint --cache --cache-location ./node_modules/.cache/stylelint \"**/*.scss\"",
+    "prepare": "husky install",
+    "test": "vitest",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^9.0.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/react": "^18.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "happy-dom": "^8.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.5",
+    "rimraf": "^4.4.0",
+    "sass": "^1.59.3",
+    "stylelint": "^15.3.0",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "tsconfig-paths": "^4.1.2",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1",
+    "vite-tsconfig-paths": "^4.0.7",
+    "vitest": "^0.29.7"
+  },
+  "peerDependencies": {
+    "react": "17.x || 18.x"
+  }
+}
